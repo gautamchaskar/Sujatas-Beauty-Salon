@@ -326,11 +326,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = (searchQuery === '' || itemText.includes(searchQuery));
 
             if (matchesCategory && matchesSearch) {
-                item.style.display = 'flex';
+                // Keep flex for service-item, flex for offer-card
+                if (item.classList.contains('offer-card')) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'flex';
+                }
             } else {
                 item.style.display = 'none';
             }
         });
+    }
+
+    // Trigger initial filter view based on active HTML tab (defaults to 'offers' / Limited Time Packages)
+    const defaultActiveTab = document.querySelector('.filter-btn.active');
+    if (defaultActiveTab) {
+        applyFilters(defaultActiveTab.getAttribute('data-filter'), '');
     }
 
     // 5. Business Card QR Code Modal Setup
