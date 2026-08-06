@@ -852,6 +852,44 @@ img {
     color: #FF4D4D;
 }
 
+.cart-items-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 90px;
+    overflow-y: auto;
+    padding: 2px 0;
+}
+
+.cart-chip {
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 3px 8px 3px 10px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.remove-chip-btn {
+    background: transparent;
+    border: none;
+    color: #FF6B6B;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 2px;
+    transition: var(--transition);
+}
+
+.remove-chip-btn:hover {
+    color: #FF0000;
+    transform: scale(1.2);
+}
+
 .cart-actions {
     width: 100%;
 }

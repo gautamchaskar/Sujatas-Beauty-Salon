@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingCartBar = document.getElementById('booking-cart');
     const selectedCountEl = document.getElementById('selected-count');
     const selectedTotalEl = document.getElementById('selected-total');
+    const cartItemsPreviewEl = document.getElementById('cart-items-preview');
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const sendWhatsappBookingBtn = document.getElementById('send-whatsapp-booking-btn');
 
@@ -46,36 +47,55 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const serviceName = btn.getAttribute('data-name');
             const servicePriceRaw = btn.getAttribute('data-price');
-            
-            // Parse numeric price if valid
             const numericPrice = parseInt(servicePriceRaw, 10) || 0;
 
-            // Check if already selected
-            const existingIndex = selectedServices.findIndex(item => item.name === serviceName);
-
-            if (existingIndex > -1) {
-                // Remove item if clicked again
-                selectedServices.splice(existingIndex, 1);
-                btn.classList.remove('added');
-                if (btn.querySelector('i')) {
-                    btn.querySelector('i').className = 'fa-solid fa-plus';
-                }
-            } else {
-                // Add item
-                selectedServices.push({
-                    name: serviceName,
-                    price: numericPrice,
-                    priceText: servicePriceRaw
-                });
-                btn.classList.add('added');
-                if (btn.querySelector('i')) {
-                    btn.querySelector('i').className = 'fa-solid fa-check';
-                }
-            }
-
-            updateBookingCart();
+            toggleServiceSelection(serviceName, numericPrice, servicePriceRaw);
         });
     });
+
+    function toggleServiceSelection(serviceName, numericPrice, servicePriceRaw) {
+        const existingIndex = selectedServices.findIndex(item => item.name === serviceName);
+
+        if (existingIndex > -1) {
+            // Remove item
+            selectedServices.splice(existingIndex, 1);
+        } else {
+            // Add item
+            selectedServices.push({
+                name: serviceName,
+                price: numericPrice,
+                priceText: servicePriceRaw
+            });
+        }
+
+        updateButtonStates();
+        updateBookingCart();
+    }
+
+    function updateButtonStates() {
+        bookButtons.forEach(btn => {
+            const serviceName = btn.getAttribute('data-name');
+            const isSelected = selectedServices.some(item => item.name === serviceName);
+
+            if (isSelected) {
+                btn.classList.add('added');
+                if (btn.classList.contains('btn-icon-add')) {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+                    btn.setAttribute('title', 'Click to remove service');
+                } else {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Added (Remove)';
+                }
+            } else {
+                btn.classList.remove('added');
+                if (btn.classList.contains('btn-icon-add')) {
+                    btn.innerHTML = '<i class="fa-solid fa-plus"></i>';
+                    btn.setAttribute('title', 'Add service to booking');
+                } else {
+                    btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add to Booking';
+                }
+            }
+        });
+    }
 
     function updateBookingCart() {
         if (!bookingCartBar) return;
@@ -87,8 +107,30 @@ document.addEventListener('DOMContentLoaded', () => {
             bookingCartBar.classList.add('active');
             selectedCountEl.textContent = count;
             selectedTotalEl.textContent = '₹' + totalSum;
+
+            // Render selected item chips with remove buttons
+            if (cartItemsPreviewEl) {
+                cartItemsPreviewEl.innerHTML = selectedServices.map(item => `
+                    <div class="cart-chip">
+                        <span class="chip-name">${item.name}</span>
+                        <button class="remove-chip-btn" data-name="${item.name}" title="Remove item">&times;</button>
+                    </div>
+                `).join('');
+
+                // Attach remove click handler to chips
+                cartItemsPreviewEl.querySelectorAll('.remove-chip-btn').forEach(removeBtn => {
+                    removeBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const nameToRemove = removeBtn.getAttribute('data-name');
+                        toggleServiceSelection(nameToRemove, 0, '');
+                    });
+                });
+            }
         } else {
             bookingCartBar.classList.remove('active');
+            if (cartItemsPreviewEl) {
+                cartItemsPreviewEl.innerHTML = '';
+            }
         }
     }
 
@@ -96,12 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', () => {
             selectedServices = [];
-            bookButtons.forEach(btn => {
-                btn.classList.remove('added');
-                if (btn.querySelector('i')) {
-                    btn.querySelector('i').className = 'fa-solid fa-plus';
-                }
-            });
+            updateButtonStates();
             updateBookingCart();
         });
     }
