@@ -4,27 +4,29 @@
    ========================================================================== */
 
 :root {
-    --primary-ruby: #7A0016;
-    --dark-ruby: #4A000D;
-    --accent-gold: #D4AF37;
-    --light-gold: #F5E6B3;
-    --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F4E2A1 50%, #B8860B 100%);
-    --ruby-gradient: linear-gradient(135deg, #7A0016 0%, #4A000D 100%);
-    --bg-dark: #120608;
-    --bg-card: rgba(30, 10, 15, 0.75);
-    --bg-card-hover: rgba(50, 15, 25, 0.85);
-    --text-light: #FDFBF7;
-    --text-muted: #D1C2C5;
+    --primary-ruby: #630014;
+    --dark-ruby: #3A000A;
+    --accent-gold: #E5C158;
+    --light-gold: #F7E9B7;
+    --metallic-gold: #D4AF37;
+    --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #E5C158 50%, #B8860B 100%);
+    --ruby-gradient: linear-gradient(135deg, #630014 0%, #300008 100%);
+    --card-gradient: linear-gradient(145deg, rgba(55, 6, 16, 0.88) 0%, rgba(22, 3, 7, 0.94) 100%);
+    --bg-dark: #120305;
+    --bg-card: rgba(45, 6, 12, 0.82);
+    --bg-card-hover: rgba(75, 10, 22, 0.9);
+    --text-light: #FFFDF9;
+    --text-muted: #E2D3D6;
     --whatsapp-green: #25D366;
     --whatsapp-hover: #1EBE5A;
-    --border-gold: rgba(212, 175, 55, 0.3);
-    --border-glass: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+    --border-gold: rgba(229, 193, 88, 0.4);
+    --border-glass: rgba(229, 193, 88, 0.22);
+    --glass-shadow: 0 14px 45px 0 rgba(0, 0, 0, 0.65);
     --font-heading: 'Cinzel', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 26px;
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -506,8 +508,8 @@ img {
 }
 
 .offer-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
+    background: var(--card-gradient);
+    border: 1px solid var(--border-gold);
     border-radius: var(--radius-md);
     padding: 24px;
     position: relative;
@@ -516,18 +518,20 @@ img {
     justify-content: space-between;
     transition: var(--transition);
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(229, 193, 88, 0.05);
 }
 
 .offer-card:hover {
     transform: translateY(-6px);
-    border-color: var(--border-gold);
-    box-shadow: 0 12px 30px rgba(122, 0, 22, 0.3);
-    background: var(--bg-card-hover);
+    border-color: var(--accent-gold);
+    box-shadow: 0 16px 40px rgba(229, 193, 88, 0.25), inset 0 0 25px rgba(229, 193, 88, 0.1);
+    background: linear-gradient(145deg, rgba(80, 8, 22, 0.92) 0%, rgba(35, 4, 10, 0.96) 100%);
 }
 
 .offer-card.featured-offer {
     border-color: var(--accent-gold);
-    background: linear-gradient(180deg, rgba(50, 15, 25, 0.9) 0%, rgba(30, 10, 15, 0.95) 100%);
+    background: linear-gradient(145deg, rgba(70, 10, 20, 0.92) 0%, rgba(30, 4, 10, 0.96) 100%);
+    box-shadow: 0 12px 35px rgba(229, 193, 88, 0.15);
 }
 
 .offer-badge {
@@ -717,20 +721,22 @@ img {
 }
 
 .service-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-glass);
+    background: var(--card-gradient);
+    border: 1px solid var(--border-gold);
     border-radius: var(--radius-sm);
     padding: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 14px;
     transition: var(--transition);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
 }
 
 .service-item:hover {
-    border-color: var(--border-gold);
-    background: var(--bg-card-hover);
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 30px rgba(229, 193, 88, 0.22);
+    transform: translateY(-2px);
+    background: linear-gradient(145deg, rgba(75, 10, 22, 0.92) 0%, rgba(30, 4, 10, 0.96) 100%);
 }
 
 .service-details h4 {
