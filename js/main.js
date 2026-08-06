@@ -181,11 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let qrCodeInstance = null;
 
     function getWebsiteUrl() {
-        // Use current URL if deployed, or fallback GitHub Pages sample URL
-        if (window.location.protocol.startsWith('http')) {
+        // Use live short link or current URL if deployed
+        if (window.location.protocol.startsWith('http') && !window.location.hostname.includes('localhost')) {
             return window.location.href;
         }
-        return 'https://gautamchaskar.github.io/sujatas-salon/';
+        return 'https://tinyurl.com/sujatasalon';
     }
 
     function generateQrCode() {
