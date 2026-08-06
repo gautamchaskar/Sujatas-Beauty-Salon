@@ -808,8 +808,10 @@ img {
 
 .services-list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Dynamic view switching for offer cards: rich card view on Limited Time Packages tab, standard row view on All Services */
@@ -847,9 +849,17 @@ img {
   display: none !important;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .services-list-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .service-item {
+    padding: 14px 16px;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
