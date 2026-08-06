@@ -183,8 +183,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalSum > 0) {
             msg += `\nEstimated Total: ₹${totalSum}\n`;
         }
-        msg += `\nPlease let me know available date & time slots! Thank you.`;
+
+        const bookingDateEl = document.getElementById('booking-date');
+        const bookingTimeEl = document.getElementById('booking-time');
+
+        if (bookingDateEl && bookingDateEl.value) {
+            const d = new Date(bookingDateEl.value);
+            const formattedDate = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            msg += `\n📅 Requested Date: ${formattedDate}`;
+        }
+        if (bookingTimeEl && bookingTimeEl.value) {
+            msg += `\n⏰ Requested Time: ${bookingTimeEl.value}`;
+        }
+
+        msg += `\n\nPlease confirm availability. Thank you!`;
         return msg;
+    }
+
+    const bookingDateEl = document.getElementById('booking-date');
+    const bookingTimeEl = document.getElementById('booking-time');
+
+    if (bookingDateEl) {
+        bookingDateEl.min = new Date().toISOString().split('T')[0];
+        bookingDateEl.addEventListener('change', () => {
+            if (modalMessagePreviewEl) {
+                modalMessagePreviewEl.textContent = generateFormattedMessageText();
+            }
+        });
+    }
+    if (bookingTimeEl) {
+        bookingTimeEl.addEventListener('change', () => {
+            if (modalMessagePreviewEl) {
+                modalMessagePreviewEl.textContent = generateFormattedMessageText();
+            }
+        });
     }
 
     // Open/Close Cart Modal Handlers
@@ -237,14 +269,23 @@ document.addEventListener('DOMContentLoaded', () => {
             let message = `*Hi Sujata's Beauty Salon!*%0A%0AI would like to book an appointment for the following services:%0A`;
             
             selectedServices.forEach((item, index) => {
-                message += `${index + 1}. *${item.name}* (${item.price ? '₹' + item.price : item.priceText})%0A`;
+                message += `${index + 1}. *${encodeURIComponent(item.name)}* (${item.price ? '₹' + item.price : encodeURIComponent(item.priceText)})%0A`;
             });
 
             if (totalSum > 0) {
                 message += `%0A*Estimated Total: ₹${totalSum}*%0A`;
             }
+
+            if (bookingDateEl && bookingDateEl.value) {
+                const d = new Date(bookingDateEl.value);
+                const formattedDate = d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                message += `%0A📅 *Requested Date:* ${encodeURIComponent(formattedDate)}`;
+            }
+            if (bookingTimeEl && bookingTimeEl.value) {
+                message += `%0A⏰ *Requested Time:* ${encodeURIComponent(bookingTimeEl.value)}`;
+            }
             
-            message += `%0APlease let me know available date and time slots! Thank you.`;
+            message += `%0A%0APlease confirm availability. Thank you!`;
 
             const whatsappUrl = `https://wa.me/918928852102?text=${message}`;
             window.open(whatsappUrl, '_blank');

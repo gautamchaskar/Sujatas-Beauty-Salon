@@ -1151,7 +1151,57 @@ img {
   justify-content: space-between;
   border-top: 1px dashed var(--border-gold);
   padding-top: 12px;
+  margin-bottom: 14px;
+}
+
+/* Appointment Preferred Date & Time Selector */
+.appointment-datetime-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
   margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-gold);
+}
+
+.datetime-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.datetime-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.datetime-input {
+  background: rgba(35, 4, 10, 0.95);
+  border: 1px solid rgba(229, 193, 88, 0.4);
+  color: var(--accent-gold);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition);
+}
+
+.datetime-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 10px rgba(229, 193, 88, 0.3);
+}
+
+.datetime-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(1) saturate(5) hue-rotate(5deg);
+  cursor: pointer;
 }
 
 .item-details {
