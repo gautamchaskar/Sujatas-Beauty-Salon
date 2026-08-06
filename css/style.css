@@ -1060,6 +1060,18 @@ img {
     text-align: center;
 }
 
+.card-toggle-btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.card-toggle-btns .btn-outline-gold.active {
+    background: var(--gold-gradient);
+    color: #2A050A;
+}
+
 .salon-card-img {
     border-radius: var(--radius-sm);
     width: 100%;

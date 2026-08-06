@@ -32,12 +32,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Service Selection & Cart Engine
     let selectedServices = [];
 
-    const bookingCartBar = document.getElementById('booking-cart');
-    const selectedCountEl = document.getElementById('selected-count');
-    const selectedTotalEl = document.getElementById('selected-total');
-    const cartItemsPreviewEl = document.getElementById('cart-items-preview');
-    const clearCartBtn = document.getElementById('clear-cart-btn');
-    const sendWhatsappBookingBtn = document.getElementById('send-whatsapp-booking-btn');
+    const floatingCartBtn = document.getElementById('floating-cart-btn');
+    const cartBadgeCountEl = document.getElementById('cart-badge-count');
+    const bottomCartBar = document.getElementById('bottom-cart-bar');
+    const bottomCountEl = document.getElementById('bottom-count');
+    const bottomTotalEl = document.getElementById('bottom-total');
+    const openCartModalBtn = document.getElementById('open-cart-modal-btn');
+
+    const cartModalBackdrop = document.getElementById('cart-modal-backdrop');
+    const closeCartModalBtn = document.getElementById('close-cart-modal');
+    const cartModalItemsListEl = document.getElementById('cart-modal-items-list');
+    const modalTotalEl = document.getElementById('modal-total');
+    const modalClearCartBtn = document.getElementById('modal-clear-cart');
+    const modalSendWhatsappBtn = document.getElementById('modal-send-whatsapp');
 
     // Attach listener to all "Add to Booking" buttons
     const bookButtons = document.querySelectorAll('.book-service-btn');
@@ -69,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateButtonStates();
-        updateBookingCart();
+        updateBookingCartUI();
     }
 
     function updateButtonStates() {
@@ -97,28 +104,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateBookingCart() {
-        if (!bookingCartBar) return;
-
+    function updateBookingCartUI() {
         const count = selectedServices.length;
         const totalSum = selectedServices.reduce((sum, item) => sum + item.price, 0);
 
-        if (count > 0) {
-            bookingCartBar.classList.add('active');
-            selectedCountEl.textContent = count;
-            selectedTotalEl.textContent = '₹' + totalSum;
+        if (cartBadgeCountEl) cartBadgeCountEl.textContent = count;
+        if (bottomCountEl) bottomCountEl.textContent = count;
+        if (bottomTotalEl) bottomTotalEl.textContent = '₹' + totalSum;
+        if (modalTotalEl) modalTotalEl.textContent = '₹' + totalSum;
 
-            // Render selected item chips with remove buttons
-            if (cartItemsPreviewEl) {
-                cartItemsPreviewEl.innerHTML = selectedServices.map(item => `
-                    <div class="cart-chip">
-                        <span class="chip-name">${item.name}</span>
-                        <button class="remove-chip-btn" data-name="${item.name}" title="Remove item">&times;</button>
+        if (count > 0) {
+            if (floatingCartBtn) floatingCartBtn.classList.add('active');
+            if (bottomCartBar) bottomCartBar.classList.add('active');
+
+            // Render selected items list inside cart modal
+            if (cartModalItemsListEl) {
+                cartModalItemsListEl.innerHTML = selectedServices.map(item => `
+                    <div class="cart-modal-item">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-right">
+                            <span class="item-price">${item.price ? '₹' + item.price : item.priceText}</span>
+                            <button class="remove-item-btn" data-name="${item.name}" title="Remove item">&times;</button>
+                        </div>
                     </div>
                 `).join('');
 
-                // Attach remove click handler to chips
-                cartItemsPreviewEl.querySelectorAll('.remove-chip-btn').forEach(removeBtn => {
+                // Attach remove handlers
+                cartModalItemsListEl.querySelectorAll('.remove-item-btn').forEach(removeBtn => {
                     removeBtn.addEventListener('click', (e) => {
                         e.stopPropagation();
                         const nameToRemove = removeBtn.getAttribute('data-name');
@@ -127,19 +139,74 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } else {
-            bookingCartBar.classList.remove('active');
-            if (cartItemsPreviewEl) {
-                cartItemsPreviewEl.innerHTML = '';
-            }
+            if (floatingCartBtn) floatingCartBtn.classList.remove('active');
+            if (bottomCartBar) bottomCartBar.classList.remove('active');
+            if (cartModalBackdrop) cartModalBackdrop.classList.remove('active');
+            if (cartModalItemsListEl) cartModalItemsListEl.innerHTML = '';
         }
     }
 
+    // Open/Close Cart Modal Handlers
+    if (floatingCartBtn) {
+        floatingCartBtn.addEventListener('click', () => {
+            if (selectedServices.length > 0 && cartModalBackdrop) {
+                cartModalBackdrop.classList.add('active');
+            }
+        });
+    }
+
+    if (openCartModalBtn) {
+        openCartModalBtn.addEventListener('click', () => {
+            if (selectedServices.length > 0 && cartModalBackdrop) {
+                cartModalBackdrop.classList.add('active');
+            }
+        });
+    }
+
+    if (closeCartModalBtn) {
+        closeCartModalBtn.addEventListener('click', () => {
+            if (cartModalBackdrop) cartModalBackdrop.classList.remove('active');
+        });
+    }
+
+    if (cartModalBackdrop) {
+        cartModalBackdrop.addEventListener('click', (e) => {
+            if (e.target === cartModalBackdrop) {
+                cartModalBackdrop.classList.remove('active');
+            }
+        });
+    }
+
     // Clear Cart
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', () => {
+    if (modalClearCartBtn) {
+        modalClearCartBtn.addEventListener('click', () => {
             selectedServices = [];
             updateButtonStates();
-            updateBookingCart();
+            updateBookingCartUI();
+        });
+    }
+
+    // Send WhatsApp Booking Message from Modal
+    if (modalSendWhatsappBtn) {
+        modalSendWhatsappBtn.addEventListener('click', () => {
+            if (selectedServices.length === 0) return;
+
+            const totalSum = selectedServices.reduce((sum, item) => sum + item.price, 0);
+            
+            let message = `*Hi Sujata's Beauty Salon!*%0A%0AI would like to book an appointment for the following services:%0A`;
+            
+            selectedServices.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}* (${item.price ? '₹' + item.price : item.priceText})%0A`;
+            });
+
+            if (totalSum > 0) {
+                message += `%0A*Estimated Total: ₹${totalSum}*%0A`;
+            }
+            
+            message += `%0APlease let me know available date and time slots! Thank you.`;
+
+            const whatsappUrl = `https://wa.me/918928852102?text=${message}`;
+            window.open(whatsappUrl, '_blank');
         });
     }
 
@@ -164,6 +231,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const whatsappUrl = `https://wa.me/918928852102?text=${message}`;
             window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    // Business Card Edition Toggle Handler
+    const displayedSalonCard = document.getElementById('displayed-salon-card');
+    const showLuxuryCardBtn = document.getElementById('show-luxury-card-btn');
+    const showOriginalCardBtn = document.getElementById('show-original-card-btn');
+
+    if (displayedSalonCard && showLuxuryCardBtn && showOriginalCardBtn) {
+        showLuxuryCardBtn.addEventListener('click', () => {
+            displayedSalonCard.src = 'images/business_card_luxury.png';
+            showLuxuryCardBtn.classList.add('active');
+            showOriginalCardBtn.classList.remove('active');
+        });
+
+        showOriginalCardBtn.addEventListener('click', () => {
+            displayedSalonCard.src = 'card.jpeg';
+            showOriginalCardBtn.classList.add('active');
+            showLuxuryCardBtn.classList.remove('active');
         });
     }
 
