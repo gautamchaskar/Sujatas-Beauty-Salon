@@ -848,10 +848,10 @@ img {
     border: 2px solid #18060A;
 }
 
-/* Bottom Sticky View Cart Bar */
+/* Bottom Sticky View Cart Bar (Sits Above Sticky Action Footer) */
 .bottom-cart-bar {
     position: fixed;
-    bottom: 0;
+    bottom: calc(60px + env(safe-area-inset-bottom, 0px));
     left: 0;
     width: 100%;
     background: rgba(22, 6, 10, 0.96);
@@ -859,7 +859,8 @@ img {
     border-top: 1px solid var(--accent-gold);
     padding: 12px 0;
     z-index: 1040;
-    transform: translateY(100%);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(200%);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -868,11 +869,6 @@ img {
 }
 
 @media (max-width: 991px) {
-    .bottom-cart-bar {
-        bottom: calc(60px + env(safe-area-inset-bottom, 0px));
-        box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.6);
-    }
-
     .floating-cart-btn {
         top: 75px;
         right: 16px;
@@ -1288,9 +1284,9 @@ img {
     margin-top: 10px;
 }
 
-/* Mobile Bottom Sticky Action Bar */
+/* Sticky Bottom Action Bar (Call Salon & Send Message) */
 .mobile-sticky-footer {
-    display: none;
+    display: flex !important;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1298,13 +1294,8 @@ img {
     height: 60px;
     background: #140508;
     border-top: 1px solid var(--border-gold);
-    z-index: 1000;
-}
-
-@media (max-width: 991px) {
-    .mobile-sticky-footer {
-        display: flex;
-    }
+    z-index: 1030;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .mobile-act-btn {
