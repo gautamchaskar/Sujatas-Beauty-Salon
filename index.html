@@ -495,11 +495,13 @@
     <div class="booking-cart-bar" id="booking-cart">
         <div class="container cart-flex">
             <div class="cart-info">
-                <div class="cart-count"><span id="selected-count">0</span> Services Selected</div>
-                <div class="cart-total">Total: <strong id="selected-total">₹0</strong></div>
+                <div class="cart-meta">
+                    <span class="cart-count"><span id="selected-count">0</span> Services</span>
+                    <span class="cart-total">Total: <strong id="selected-total">₹0</strong></span>
+                </div>
+                <button class="btn btn-sm btn-clear" id="clear-cart-btn"><i class="fa-solid fa-trash"></i> Clear</button>
             </div>
             <div class="cart-actions">
-                <button class="btn btn-sm btn-clear" id="clear-cart-btn"><i class="fa-solid fa-trash"></i> Clear</button>
                 <button class="btn btn-whatsapp" id="send-whatsapp-booking-btn">
                     <i class="fa-brands fa-whatsapp"></i> Book Selected on WhatsApp
                 </button>
