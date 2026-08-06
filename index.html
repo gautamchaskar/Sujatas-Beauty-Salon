@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=11.0">
+    <link rel="stylesheet" href="css/style.css?v=13.0">
 </head>
 <body>
 
@@ -512,21 +512,28 @@
             <button class="modal-close" id="close-cart-modal">&times;</button>
             <div class="modal-body">
                 <div class="cart-modal-header">
-                    <h3><i class="fa-solid fa-bag-shopping gold-icon"></i> Your Selected Services</h3>
+                    <h3><i class="fa-solid fa-bag-shopping gold-icon"></i> Selected Services Inquiry</h3>
                 </div>
                 
                 <!-- List of selected items with individual remove buttons -->
                 <div class="cart-modal-items" id="cart-modal-items-list"></div>
 
                 <div class="cart-modal-summary">
-                    <div class="summary-total">Total: <strong id="modal-total">₹0</strong></div>
+                    <div class="summary-total">Total Estimate: <strong id="modal-total">₹0</strong></div>
                     <button class="btn btn-sm btn-clear" id="modal-clear-cart"><i class="fa-solid fa-trash"></i> Clear All</button>
+                </div>
+
+                <!-- Live Generated WhatsApp Message Preview -->
+                <div class="message-preview-box">
+                    <div class="preview-title"><i class="fa-brands fa-whatsapp"></i> Live WhatsApp Message Preview:</div>
+                    <div class="preview-text" id="modal-message-preview"></div>
                 </div>
 
                 <div class="cart-modal-actions">
                     <button class="btn btn-whatsapp btn-block" id="modal-send-whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp
+                        <i class="fa-brands fa-whatsapp"></i> Send Inquiry on WhatsApp
                     </button>
+                    <p class="reassurance-note"><i class="fa-solid fa-shield-heart"></i> No payment needed now. This simply opens WhatsApp to send Sujata your inquiry!</p>
                 </div>
             </div>
         </div>

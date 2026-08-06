@@ -104,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const modalMessagePreviewEl = document.getElementById('modal-message-preview');
+
     function updateBookingCartUI() {
         const count = selectedServices.length;
         const totalSum = selectedServices.reduce((sum, item) => sum + item.price, 0);
@@ -112,6 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bottomCountEl) bottomCountEl.textContent = count;
         if (bottomTotalEl) bottomTotalEl.textContent = '₹' + totalSum;
         if (modalTotalEl) modalTotalEl.textContent = '₹' + totalSum;
+
+        if (modalMessagePreviewEl) {
+            modalMessagePreviewEl.textContent = generateFormattedMessageText();
+        }
 
         if (count > 0) {
             if (floatingCartBtn) floatingCartBtn.classList.add('active');
@@ -143,7 +149,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bottomCartBar) bottomCartBar.classList.remove('active');
             if (cartModalBackdrop) cartModalBackdrop.classList.remove('active');
             if (cartModalItemsListEl) cartModalItemsListEl.innerHTML = '';
+            if (modalMessagePreviewEl) modalMessagePreviewEl.textContent = '';
         }
+    }
+
+    function generateFormattedMessageText() {
+        if (selectedServices.length === 0) return '';
+        const totalSum = selectedServices.reduce((sum, item) => sum + item.price, 0);
+        let msg = `Hi Sujata's Beauty Salon! 👋\n\nI would like to inquire about booking an appointment for:\n`;
+        selectedServices.forEach((item, index) => {
+            msg += `${index + 1}. ${item.name} (${item.price ? '₹' + item.price : item.priceText})\n`;
+        });
+        if (totalSum > 0) {
+            msg += `\nEstimated Total: ₹${totalSum}\n`;
+        }
+        msg += `\nPlease let me know available date & time slots! Thank you.`;
+        return msg;
     }
 
     // Open/Close Cart Modal Handlers

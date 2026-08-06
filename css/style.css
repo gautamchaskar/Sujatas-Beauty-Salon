@@ -1014,6 +1014,56 @@ img {
     font-size: 0.95rem;
 }
 
+/* Live WhatsApp Message Preview Box & Reassurance Note */
+.message-preview-box {
+    background: rgba(37, 211, 102, 0.08);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 16px;
+}
+
+.preview-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--whatsapp-green);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.preview-text {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: var(--text-light);
+    white-space: pre-wrap;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.reassurance-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.reassurance-note i {
+    color: var(--accent-gold);
+}
+
 /* About & Card Section */
 .about-section {
     background: radial-gradient(circle at bottom left, rgba(122, 0, 22, 0.3) 0%, rgba(18, 6, 8, 1) 70%);
