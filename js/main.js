@@ -219,11 +219,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Global Modal Helper with Back Button (popstate) History Support
+    function openModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.add('active');
+        try {
+            history.pushState({ modalOpen: true }, '');
+        } catch (e) {}
+    }
+
+    function closeModal(modalEl) {
+        if (!modalEl) return;
+        modalEl.classList.remove('active');
+        try {
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            }
+        } catch (e) {}
+    }
+
+    window.addEventListener('popstate', () => {
+        const activeModals = document.querySelectorAll('.modal-backdrop.active');
+        if (activeModals.length > 0) {
+            activeModals.forEach(m => m.classList.remove('active'));
+        }
+    });
+
     // Open/Close Cart Modal Handlers
     if (floatingCartBtn) {
         floatingCartBtn.addEventListener('click', () => {
             if (selectedServices.length > 0 && cartModalBackdrop) {
-                cartModalBackdrop.classList.add('active');
+                openModal(cartModalBackdrop);
             }
         });
     }
@@ -231,21 +257,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openCartModalBtn) {
         openCartModalBtn.addEventListener('click', () => {
             if (selectedServices.length > 0 && cartModalBackdrop) {
-                cartModalBackdrop.classList.add('active');
+                openModal(cartModalBackdrop);
             }
         });
     }
 
     if (closeCartModalBtn) {
         closeCartModalBtn.addEventListener('click', () => {
-            if (cartModalBackdrop) cartModalBackdrop.classList.remove('active');
+            if (cartModalBackdrop) closeModal(cartModalBackdrop);
         });
     }
 
     if (cartModalBackdrop) {
         cartModalBackdrop.addEventListener('click', (e) => {
             if (e.target === cartModalBackdrop) {
-                cartModalBackdrop.classList.remove('active');
+                closeModal(cartModalBackdrop);
             }
         });
     }
