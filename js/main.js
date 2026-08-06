@@ -342,24 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Business Card Edition Toggle Handler
-    const displayedSalonCard = document.getElementById('displayed-salon-card');
-    const showLuxuryCardBtn = document.getElementById('show-luxury-card-btn');
-    const showOriginalCardBtn = document.getElementById('show-original-card-btn');
 
-    if (displayedSalonCard && showLuxuryCardBtn && showOriginalCardBtn) {
-        showLuxuryCardBtn.addEventListener('click', () => {
-            displayedSalonCard.src = 'images/business_card_luxury.png';
-            showLuxuryCardBtn.classList.add('active');
-            showOriginalCardBtn.classList.remove('active');
-        });
-
-        showOriginalCardBtn.addEventListener('click', () => {
-            displayedSalonCard.src = 'card.jpeg';
-            showOriginalCardBtn.classList.add('active');
-            showLuxuryCardBtn.classList.remove('active');
-        });
-    }
 
     // 4. Live Category Filtering & Search
     const filterTabs = document.querySelectorAll('.filter-btn');
