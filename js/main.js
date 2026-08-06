@@ -481,15 +481,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         installAppBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User choice outcome: ${outcome}`);
-                deferredPrompt = null;
-                if (outcome === 'accepted') {
-                    installAppBtn.style.display = 'none';
+                try {
+                    deferredPrompt.prompt();
+                    const choiceResult = await deferredPrompt.userChoice;
+                    console.log('User choice:', choiceResult.outcome);
+                    if (choiceResult.outcome === 'accepted') {
+                        installAppBtn.style.display = 'none';
+                    }
+                    deferredPrompt = null;
+                } catch (err) {
+                    console.log('Prompt error:', err);
                 }
             } else {
-                alert("To Install Sujata's Beauty Salon App:\n\n1. On Mobile (Android/iPhone):\n   Tap your browser menu (⋮ or Share icon) and select 'Add to Home Screen'.\n\n2. On Desktop Chrome/Edge:\n   Click the Install App icon (📥) on the right end of your top address bar!");
+                alert("To Install Sujata's Beauty Salon App:\n\n1. On Mobile (Android/Chrome):\n   Tap your browser menu (⋮) and select 'Add to Home Screen' or 'Install App'.\n\n2. On iPhone (Safari):\n   Tap the Share icon at the bottom of Safari and select 'Add to Home Screen'.\n\n3. On Desktop Chrome/Edge:\n   Click the Install App icon (📥) on the right end of your top address bar!");
             }
         });
     }
