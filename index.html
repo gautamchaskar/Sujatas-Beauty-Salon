@@ -49,7 +49,7 @@
     <link rel="apple-touch-icon" href="images/logo.png" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=34.0" />
+    <link rel="stylesheet" href="css/style.css?v=35.0" />
   </head>
   <body>
     <!-- Top Announcement Bar -->
@@ -373,6 +373,340 @@
             >
               <i class="fa-solid fa-plus"></i> Add to Booking
             </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Complete Service Menu Section -->
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="sub-heading">Rate Card & Menu</span>
+          <h2 class="section-title">All Salon Services</h2>
+          <div class="gold-divider"></div>
+          <p class="section-desc">
+            Search or filter by category to add services to your personalized
+            WhatsApp booking list!
+          </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="menu-controls">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              id="service-search"
+              placeholder="Search services (e.g. Facial, Wax, Hair Spa)..."
+            />
+          </div>
+
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">
+              All Services
+            </button>
+            <button class="filter-btn" data-filter="hair">Hair Care</button>
+            <button class="filter-btn" data-filter="skin">Skin & Facial</button>
+            <button class="filter-btn" data-filter="waxing">
+              Waxing & Body
+            </button>
+            <button class="filter-btn" data-filter="nails">Nail Art</button>
+          </div>
+        </div>
+
+        <!-- Services List Table / Grid -->
+        <div class="services-list-grid" id="services-list">
+          <!-- Hair Services -->
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>Advance Hair Cut + Hair Wash + Blow Dry</h4>
+              <p>Style cut with deep hair wash and volume blow dry</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹600</span>
+              <span class="new-p">₹450</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Advance Hair Cut + Wash + Blow Dry"
+                data-price="450"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>Simple Hair Cut + Wash + Hair Spa + Blow Dry</h4>
+              <p>Complete hair rejuvenating spa package</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹2200</span>
+              <span class="new-p">₹1999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Simple Hair Cut + Wash + Spa + Blow Dry"
+                data-price="1999"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>Hair Colour Root Touch Up (2 inch) + Hair Spa</h4>
+              <p>Root touch up with relaxing hair spa</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹2000</span>
+              <span class="new-p">₹1500</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Hair Colour Root Touch Up + Spa"
+                data-price="1500"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>12 Strips Highlights + Threading</h4>
+              <p>Glamour hair highlights with free eyebrows threading</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹2200</span>
+              <span class="new-p">₹1999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="12 Strips Highlights + Threading"
+                data-price="1999"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>Nanoplastia Hair Treatment + Threading + Hair Cut</h4>
+              <p>Ultra-smooth gloss hair transformation</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹5000</span>
+              <span class="new-p">₹3999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Nanoplastia Hair Treatment + Cut"
+                data-price="3999"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="hair">
+            <div class="service-details">
+              <h4>Botox Hair Treatment + Threading + Hair Cut</h4>
+              <p>Restorative hair botox treatment for smooth shiny hair</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹6000</span>
+              <span class="new-p">₹4999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Botox Treatment + Cut"
+                data-price="4999"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Skin & Facial Services -->
+          <div class="service-item" data-category="skin">
+            <div class="service-details">
+              <h4>Fruit Facial + D-Tan + Threading</h4>
+              <p>Refreshing fruit facial package</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹700</span>
+              <span class="new-p">₹499</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Fruit Facial + D-Tan + Threading"
+                data-price="499"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="skin">
+            <div class="service-details">
+              <h4>Cleanup + Full Hand Underarms + Half Legs</h4>
+              <p>Express glowing facial cleanup with waxing</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1000</span>
+              <span class="new-p">₹649</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Cleanup + Waxing Combo"
+                data-price="649"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="skin">
+            <div class="service-details">
+              <h4>Charcoal Facial + D-Tan + Waxing + Threading</h4>
+              <p>Deep pore charcoal cleansing detox facial</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1150</span>
+              <span class="new-p">₹999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Charcoal Facial Package"
+                data-price="999"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="skin">
+            <div class="service-details">
+              <h4>Gold Facial + Bleach + Full Hand Wax + Underarms</h4>
+              <p>Radiant gold glow luxury facial package</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1500</span>
+              <span class="new-p">₹1200</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Gold Facial Package"
+                data-price="1200"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Waxing & Body Care Services -->
+          <div class="service-item" data-category="waxing">
+            <div class="service-details">
+              <h4>Full Hand Waxing + Underarms</h4>
+              <p>Hygienic smooth arm waxing</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹400</span>
+              <span class="new-p">₹299</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Full Hand Waxing + Underarms"
+                data-price="299"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="waxing">
+            <div class="service-details">
+              <h4>Full Legs Waxing</h4>
+              <p>Smooth full leg waxing care</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹500</span>
+              <span class="new-p">₹399</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Full Legs Waxing"
+                data-price="399"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="waxing">
+            <div class="service-details">
+              <h4>Rica Full Body Waxing Special</h4>
+              <p>Premium Rica waxing for complete smooth body care</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹2500</span>
+              <span class="new-p">₹1899</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Rica Full Body Waxing"
+                data-price="1899"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Nail Art & Extension Services -->
+          <div class="service-item" data-category="nails">
+            <div class="service-details">
+              <h4>Gel Nail Polish (Hands or Feet)</h4>
+              <p>Long-lasting shiny gel nail paint</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹600</span>
+              <span class="new-p">₹450</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Gel Nail Polish"
+                data-price="450"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="nails">
+            <div class="service-details">
+              <h4>Acrylic / Gel Nail Extensions with Nail Art</h4>
+              <p>Glamour custom nail extension extensions</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1800</span>
+              <span class="new-p">₹1299</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Nail Extensions with Art"
+                data-price="1299"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="nails">
+            <div class="service-details">
+              <h4>Gel Polish Natural Nails + Extension</h4>
+              <p>Natural nail overlay with extensions</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1500</span>
+              <span class="new-p">₹1050</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Gel Polish Natural Nails + Extension"
+                data-price="1050"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
