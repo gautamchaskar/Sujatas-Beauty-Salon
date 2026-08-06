@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.location.protocol.startsWith('http') && !window.location.hostname.includes('localhost')) {
             return window.location.href;
         }
-        return 'https://tinyurl.com/sujatasalon';
+        return 'https://tinyurl.com/sujatas-salon';
     }
 
     function generateQrCode() {
