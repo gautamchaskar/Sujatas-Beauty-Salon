@@ -58,9 +58,9 @@ body {
   background:
     linear-gradient(
       135deg,
-      rgba(16, 2, 5, 0.85) 0%,
-      rgba(35, 4, 10, 0.8) 50%,
-      rgba(14, 2, 4, 0.88) 100%
+      rgba(16, 2, 5, 0.45) 0%,
+      rgba(35, 4, 10, 0.35) 50%,
+      rgba(14, 2, 4, 0.5) 100%
     ),
     url("../images/business_card_bg_texture.png") center/cover fixed no-repeat;
   color: var(--text-light);
@@ -422,7 +422,7 @@ img {
   position: relative;
   padding: 90px 0 100px 0;
   background:
-    linear-gradient(135deg, rgba(30, 2, 8, 0.75) 0%, rgba(55, 6, 16, 0.7) 100%),
+    linear-gradient(135deg, rgba(30, 2, 8, 0.25) 0%, rgba(55, 6, 16, 0.2) 100%),
     url("../images/hero_card_velvet_bg.png") center/cover no-repeat;
   border-bottom: 2px solid var(--accent-gold);
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
@@ -450,18 +450,19 @@ img {
 }
 
 .hero-brand-emblem {
-  width: 175px;
-  height: 175px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent-gold);
-  box-shadow: 0 0 50px rgba(229, 193, 88, 0.6);
+  width: 220px;
+  max-width: 85vw;
+  height: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 6px 25px rgba(0, 0, 0, 0.75));
   transition: var(--transition);
 }
 
 .hero-brand-emblem:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 65px rgba(229, 193, 88, 0.75);
+  transform: scale(1.04);
+  filter: drop-shadow(0 10px 35px rgba(229, 193, 88, 0.6));
 }
 
 .badge-tag {
