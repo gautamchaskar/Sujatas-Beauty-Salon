@@ -44,30 +44,12 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--bg-dark);
+    background: linear-gradient(135deg, rgba(18, 3, 6, 0.94) 0%, rgba(45, 5, 12, 0.92) 50%, rgba(18, 2, 5, 0.96) 100%), url('../images/logo.png') center/cover fixed no-repeat;
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
     padding-bottom: 70px; /* Space for mobile sticky footer */
     position: relative;
-}
-
-/* Subtle Fixed Luxury Logo Watermark Background */
-body::before {
-    content: '';
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px;
-    height: 650px;
-    max-width: 90vw;
-    max-height: 90vw;
-    background: url('../images/logo.png') center/contain no-repeat;
-    opacity: 0.06;
-    pointer-events: none;
-    z-index: 0;
-    filter: drop-shadow(0 0 50px rgba(229, 193, 88, 0.4));
 }
 
 @media (min-width: 992px) {
@@ -429,22 +411,24 @@ img {
 }
 
 .hero-brand-emblem-box {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
 }
 
 .hero-brand-emblem {
-    width: 130px;
-    height: 130px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--accent-gold);
-    box-shadow: 0 0 35px rgba(229, 193, 88, 0.45);
+    border: 2.5px solid var(--accent-gold);
+    box-shadow: 0 0 45px rgba(229, 193, 88, 0.5);
     transition: var(--transition);
 }
 
 .hero-brand-emblem:hover {
     transform: scale(1.06);
-    box-shadow: 0 0 55px rgba(229, 193, 88, 0.7);
+    box-shadow: 0 0 65px rgba(229, 193, 88, 0.75);
 }
 
 .badge-tag {
