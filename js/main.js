@@ -330,10 +330,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters(category, searchQuery) {
         serviceItems.forEach(item => {
-            const itemCat = item.getAttribute('data-category');
+            const itemCatString = item.getAttribute('data-category') || '';
+            const itemCategories = itemCatString.split(' ');
             const itemText = item.textContent.toLowerCase();
 
-            const matchesCategory = (category === 'all' || itemCat === category);
+            const matchesCategory = (category === 'all' || itemCategories.includes(category));
             const matchesSearch = (searchQuery === '' || itemText.includes(searchQuery));
 
             if (matchesCategory && matchesSearch) {
