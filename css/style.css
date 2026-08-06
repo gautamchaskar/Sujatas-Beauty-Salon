@@ -783,21 +783,21 @@ img {
     color: #FFF;
 }
 
-/* Floating Booking Cart Sticky Bar */
+/* Floating Booking Cart Sticky Bar (Top of Screen) */
 .booking-cart-bar {
     position: fixed;
-    bottom: 24px;
+    top: 75px;
     left: 50%;
-    transform: translateX(-50%) translateY(160px);
+    transform: translateX(-50%) translateY(-180px);
     width: 92%;
     max-width: 480px;
-    background: rgba(28, 9, 14, 0.96);
+    background: rgba(25, 7, 12, 0.97);
     backdrop-filter: blur(20px);
     border: 1px solid var(--accent-gold);
     border-radius: 20px;
     padding: 14px 18px;
     z-index: 1050;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -866,7 +866,7 @@ img {
 
 @media (max-width: 991px) {
     .booking-cart-bar {
-        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+        top: 68px;
         width: 92%;
         max-width: 440px;
         padding: 12px 16px;
