@@ -361,24 +361,26 @@ img {
   gap: 12px;
 }
 
-.qr-trigger-btn {
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid var(--border-gold);
-  color: var(--accent-gold);
-  padding: 8px 14px;
-  border-radius: 20px;
-  cursor: pointer;
+.install-app-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
   font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(229, 193, 88, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--accent-gold);
+  cursor: pointer;
   transition: var(--transition);
 }
 
-.qr-trigger-btn:hover {
-  background: var(--accent-gold);
+.install-app-btn:hover {
+  background: var(--gold-gradient);
   color: #2a050a;
+  box-shadow: 0 4px 15px rgba(229, 193, 88, 0.4);
+  transform: translateY(-2px);
 }
 
 .mobile-menu-btn {

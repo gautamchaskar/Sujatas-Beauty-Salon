@@ -1,0 +1,22 @@
+{
+  "name": "Sujata's Beauty Salon",
+  "short_name": "Sujata Salon",
+  "description": "Skin, Hair, Makeup & Nail Salon in Karanjade, Panvel",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#3B040F",
+  "theme_color": "#5C0917",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

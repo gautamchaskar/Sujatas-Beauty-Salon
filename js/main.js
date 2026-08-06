@@ -425,6 +425,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js').then(reg => {
+                console.log('Service Worker registered:', reg.scope);
+            }).catch(err => {
+                console.log('Service Worker registration failed:', err);
+            });
+        });
+    }
+
+    // PWA Web App Install Prompt Handler
+    let deferredPrompt = null;
+    const installAppBtn = document.getElementById('install-app-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installAppBtn) {
+            installAppBtn.classList.add('pwa-ready');
+        }
+    });
+
+    if (installAppBtn) {
+        installAppBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User choice outcome: ${outcome}`);
+                deferredPrompt = null;
+            } else {
+                alert("To Install Sujata's Beauty Salon App:\n\n1. On Mobile (Android/iPhone):\n   Tap your browser menu (⋮ or Share icon) and select 'Add to Home Screen'.\n\n2. On Desktop Chrome/Edge:\n   Click the Install App icon (📥) on the right end of your top address bar!");
+            }
+        });
+    }
+
     // Trigger initial filter view based on active HTML tab (defaults to 'offers' / Limited Time Packages)
     const defaultActiveTab = document.querySelector('.filter-btn.active');
     if (defaultActiveTab) {
