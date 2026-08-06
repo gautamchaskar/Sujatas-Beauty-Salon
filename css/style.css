@@ -259,6 +259,21 @@ img {
 
 .brand-logo {
     display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--accent-gold);
+    box-shadow: 0 0 12px rgba(229, 193, 88, 0.35);
+}
+
+.brand-text {
+    display: flex;
     flex-direction: column;
     line-height: 1.1;
 }
