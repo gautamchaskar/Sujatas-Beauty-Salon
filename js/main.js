@@ -436,30 +436,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // PWA Web App Install Prompt Handler
+    // PWA Web App Install Prompt & Installed State Handler
     let deferredPrompt = null;
     const installAppBtn = document.getElementById('install-app-btn');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        if (installAppBtn) {
-            installAppBtn.classList.add('pwa-ready');
-        }
-    });
+    function isAppInstalled() {
+        return (
+            window.matchMedia('(display-mode: standalone)').matches ||
+            window.navigator.standalone === true ||
+            document.referrer.includes('android-app://')
+        );
+    }
 
     if (installAppBtn) {
+        if (isAppInstalled()) {
+            installAppBtn.style.display = 'none';
+        }
+
         installAppBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 console.log(`User choice outcome: ${outcome}`);
                 deferredPrompt = null;
+                if (outcome === 'accepted') {
+                    installAppBtn.style.display = 'none';
+                }
             } else {
                 alert("To Install Sujata's Beauty Salon App:\n\n1. On Mobile (Android/iPhone):\n   Tap your browser menu (⋮ or Share icon) and select 'Add to Home Screen'.\n\n2. On Desktop Chrome/Edge:\n   Click the Install App icon (📥) on the right end of your top address bar!");
             }
         });
     }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (installAppBtn && !isAppInstalled()) {
+            installAppBtn.style.display = 'inline-flex';
+        }
+    });
+
+    window.addEventListener('appinstalled', () => {
+        console.log("Sujata's Salon PWA installed!");
+        if (installAppBtn) {
+            installAppBtn.style.display = 'none';
+        }
+    });
 
     // Trigger initial filter view based on active HTML tab (defaults to 'offers' / Limited Time Packages)
     const defaultActiveTab = document.querySelector('.filter-btn.active');
