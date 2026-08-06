@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=5.0">
+    <link rel="stylesheet" href="css/style.css?v=7.0">
 </head>
 <body>
 
@@ -491,24 +491,47 @@
         </div>
     </section>
 
-    <!-- Floating Booking Cart Bar / Sticky WhatsApp Draft Bar -->
-    <div class="booking-cart-bar" id="booking-cart">
-        <div class="container cart-flex">
-            <div class="cart-info">
-                <div class="cart-meta">
-                    <span class="cart-count"><span id="selected-count">0</span> Services</span>
-                    <span class="cart-total">Total: <strong id="selected-total">₹0</strong></span>
-                </div>
-                <button class="btn btn-sm btn-clear" id="clear-cart-btn"><i class="fa-solid fa-trash"></i> Clear All</button>
+    <!-- Top Right Floating Round Cart Button with Badge -->
+    <button class="floating-cart-btn" id="floating-cart-btn" aria-label="View Cart" title="View Selected Services">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge-count" id="cart-badge-count">0</span>
+    </button>
+
+    <!-- Bottom Sticky View Cart Bar -->
+    <div class="bottom-cart-bar" id="bottom-cart-bar">
+        <div class="container bottom-cart-content">
+            <div class="bottom-cart-info">
+                <span class="b-count"><span id="bottom-count">0</span> Services</span>
+                <span class="b-total">Total: <strong id="bottom-total">₹0</strong></span>
             </div>
+            <button class="btn btn-gold btn-sm" id="open-cart-modal-btn">
+                <i class="fa-solid fa-eye"></i> View Cart & Send Message
+            </button>
+        </div>
+    </div>
 
-            <!-- List of selected items with remove buttons -->
-            <div class="cart-items-preview" id="cart-items-preview"></div>
+    <!-- Selected Services Cart Modal Drawer -->
+    <div class="modal-backdrop" id="cart-modal-backdrop">
+        <div class="modal-card cart-modal-card">
+            <button class="modal-close" id="close-cart-modal">&times;</button>
+            <div class="modal-body">
+                <div class="cart-modal-header">
+                    <h3><i class="fa-solid fa-bag-shopping gold-icon"></i> Your Selected Services</h3>
+                </div>
+                
+                <!-- List of selected items with individual remove buttons -->
+                <div class="cart-modal-items" id="cart-modal-items-list"></div>
 
-            <div class="cart-actions">
-                <button class="btn btn-whatsapp" id="send-whatsapp-booking-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp
-                </button>
+                <div class="cart-modal-summary">
+                    <div class="summary-total">Total: <strong id="modal-total">₹0</strong></div>
+                    <button class="btn btn-sm btn-clear" id="modal-clear-cart"><i class="fa-solid fa-trash"></i> Clear All</button>
+                </div>
+
+                <div class="cart-modal-actions">
+                    <button class="btn btn-whatsapp btn-block" id="modal-send-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Send Message on WhatsApp
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -656,6 +679,6 @@
     <!-- QRCode JS Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <!-- Custom Main JS -->
-    <script src="js/main.js?v=3.0"></script>
+    <script src="js/main.js?v=6.0"></script>
 </body>
 </html>
