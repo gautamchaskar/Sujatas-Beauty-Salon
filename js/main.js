@@ -210,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Send WhatsApp Booking Message
-    if (sendWhatsappBookingBtn) {
+    // Send WhatsApp Booking Message (if button exists)
+    if (typeof sendWhatsappBookingBtn !== 'undefined' && sendWhatsappBookingBtn) {
         sendWhatsappBookingBtn.addEventListener('click', () => {
             if (selectedServices.length === 0) return;
 
