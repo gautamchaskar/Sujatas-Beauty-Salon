@@ -901,9 +901,22 @@ img {
 }
 
 .new-p {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--accent-gold);
+}
+
+.save-pill {
+  background: linear-gradient(135deg, rgba(229, 193, 88, 0.2) 0%, rgba(184, 134, 11, 0.3) 100%);
+  color: var(--accent-gold);
+  border: 1px solid rgba(229, 193, 88, 0.45);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-icon-add {
