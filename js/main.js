@@ -299,12 +299,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceSearchInput = document.getElementById('service-search');
     const serviceItems = document.querySelectorAll('.service-item');
 
+    const servicesGrid = document.getElementById('services-list');
+
     filterTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             filterTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
             const filterValue = tab.getAttribute('data-filter');
+            
+            if (servicesGrid) {
+                if (filterValue === 'offers') {
+                    servicesGrid.classList.add('offers-tab-active');
+                } else {
+                    servicesGrid.classList.remove('offers-tab-active');
+                }
+            }
+
             applyFilters(filterValue, serviceSearchInput ? serviceSearchInput.value.toLowerCase() : '');
         });
     });
@@ -326,12 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = (searchQuery === '' || itemText.includes(searchQuery));
 
             if (matchesCategory && matchesSearch) {
-                // Keep flex for service-item, flex for offer-card
-                if (item.classList.contains('offer-card')) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'flex';
-                }
+                item.style.display = 'flex';
             } else {
                 item.style.display = 'none';
             }
@@ -341,7 +347,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger initial filter view based on active HTML tab (defaults to 'offers' / Limited Time Packages)
     const defaultActiveTab = document.querySelector('.filter-btn.active');
     if (defaultActiveTab) {
-        applyFilters(defaultActiveTab.getAttribute('data-filter'), '');
+        const initialCategory = defaultActiveTab.getAttribute('data-filter');
+        if (servicesGrid) {
+            if (initialCategory === 'offers') {
+                servicesGrid.classList.add('offers-tab-active');
+            } else {
+                servicesGrid.classList.remove('offers-tab-active');
+            }
+        }
+        applyFilters(initialCategory, '');
     }
 
     // 5. Business Card QR Code Modal Setup

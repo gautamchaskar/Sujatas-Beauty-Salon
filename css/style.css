@@ -812,6 +812,41 @@ img {
   gap: 20px;
 }
 
+/* Dynamic view switching for offer cards: rich card view on Limited Time Packages tab, standard row view on All Services */
+.services-list-grid:not(.offers-tab-active) .offer-card {
+  padding: 18px;
+  min-height: auto;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+}
+
+.services-list-grid:not(.offers-tab-active) .offer-card .offer-card-view {
+  display: none !important;
+}
+
+.services-list-grid:not(.offers-tab-active) .offer-card .standard-row-view {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.services-list-grid.offers-tab-active .offer-card {
+  padding: 24px;
+  min-height: 240px;
+}
+
+.services-list-grid.offers-tab-active .offer-card .offer-card-view {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.services-list-grid.offers-tab-active .offer-card .standard-row-view {
+  display: none !important;
+}
+
 @media (max-width: 480px) {
   .services-list-grid {
     grid-template-columns: 1fr;
