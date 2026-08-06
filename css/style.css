@@ -249,35 +249,13 @@ img {
   align-items: center;
 }
 
-.top-bar-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.top-phone {
+  font-weight: 600;
+  color: var(--accent-gold);
 }
 
-.lang-switcher {
-  display: inline-flex;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--border-gold);
-  border-radius: 20px;
-  padding: 2px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.lang-btn.active, .lang-btn:hover {
-  background: var(--gold-gradient);
-  color: #2A050A;
+.top-phone:hover {
+  color: #fff;
 }
 
 @media (max-width: 768px) {
