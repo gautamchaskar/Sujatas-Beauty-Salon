@@ -397,6 +397,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sort items ascending by price on startup
     sortServicesAscending();
 
+    // View Offers CTA Hero Button Click Listener
+    const viewOffersCtaBtn = document.getElementById('view-offers-cta');
+    if (viewOffersCtaBtn) {
+        viewOffersCtaBtn.addEventListener('click', () => {
+            const offersTabBtn = document.querySelector('.filter-btn[data-filter="offers"]');
+            if (offersTabBtn) {
+                offersTabBtn.click();
+            }
+        });
+    }
+
     function applyFilters(category, searchQuery) {
         serviceItems.forEach(item => {
             const itemCatString = item.getAttribute('data-category') || '';
