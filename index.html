@@ -49,7 +49,7 @@
     <link rel="apple-touch-icon" href="images/logo.png" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=35.0" />
+    <link rel="stylesheet" href="css/style.css?v=36.0" />
   </head>
   <body>
     <!-- Top Announcement Bar -->
@@ -403,20 +403,177 @@
           </div>
 
           <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">
-              All Services
-            </button>
+            <button class="filter-btn active" data-filter="all">All Services</button>
+            <button class="filter-btn" data-filter="offers">⭐ Limited Time Packages</button>
             <button class="filter-btn" data-filter="hair">Hair Care</button>
             <button class="filter-btn" data-filter="skin">Skin & Facial</button>
-            <button class="filter-btn" data-filter="waxing">
-              Waxing & Body
-            </button>
+            <button class="filter-btn" data-filter="waxing">Waxing & Body</button>
             <button class="filter-btn" data-filter="nails">Nail Art</button>
           </div>
         </div>
 
         <!-- Services List Table / Grid -->
         <div class="services-list-grid" id="services-list">
+          <!-- Limited Time Combo Packages -->
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Advance Hair Cut Package ⭐</h4>
+              <p>Advance Hair Cut + Hair Wash + Blow Dry</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹600</span>
+              <span class="new-p">₹450</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Advance Hair Cut + Hair Wash + Blow Dry"
+                data-price="450"
+                data-original="600"
+                data-savings="150"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Fruit Facial Combo ⭐</h4>
+              <p>Fruit Facial + D-Tan + Threading</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹700</span>
+              <span class="new-p">₹499</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Fruit Facial + D-Tan + Threading"
+                data-price="499"
+                data-original="700"
+                data-savings="201"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Cleanup & Body Combo ⭐</h4>
+              <p>Cleanup + Full Hand Underarms + Half Legs</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1000</span>
+              <span class="new-p">₹649</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Cleanup + Full Hand U.A + Half Legs"
+                data-price="649"
+                data-original="1000"
+                data-savings="351"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Gold Facial Special ⭐</h4>
+              <p>Gold Facial + Bleach + Full Hand Wax + Underarms</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1500</span>
+              <span class="new-p">₹1200</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Gold Facial + Bleach + Full Hand + U.A"
+                data-price="1200"
+                data-original="1500"
+                data-savings="300"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Charcoal Facial Package ⭐</h4>
+              <p>Charcoal Facial + D-Tan + Hand Wax + Underarms + Threading</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹1150</span>
+              <span class="new-p">₹999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Charcoal Facial + D-Tan + Hand Wax U.A + Threading"
+                data-price="999"
+                data-original="1150"
+                data-savings="151"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Nanoplastia Hair Treatment ⭐</h4>
+              <p>Nanoplastia Hair Treatment + Threading + Hair Cut</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹5000</span>
+              <span class="new-p">₹3999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Nanoplastia Hair Treatment + Threading + Hair Cut"
+                data-price="3999"
+                data-original="5000"
+                data-savings="1001"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Botox Hair Treatment ⭐</h4>
+              <p>Botox Treatment (Short to Medium) + Threading + Hair Cut</p>
+            </div>
+            <div class="service-pricing">
+              <span class="old-p">₹6000</span>
+              <span class="new-p">₹4999</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Botox Treatment + Threading + Hair Cut"
+                data-price="4999"
+                data-original="6000"
+                data-savings="1001"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-item" data-category="offers">
+            <div class="service-details">
+              <h4>Advance Facial Special ⭐</h4>
+              <p>Any Advance Facial + Threading Free</p>
+            </div>
+            <div class="service-pricing">
+              <span class="discount-price">50% OFF</span>
+              <button
+                class="btn-icon-add book-service-btn"
+                data-name="Any Advance Facial (50% Off) + Threading Free"
+                data-price="Special Discount"
+                data-original="50% Off"
+                data-savings="50% Off"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+
           <!-- Hair Services -->
           <div class="service-item" data-category="hair">
             <div class="service-details">
