@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isSelected) {
                 btn.classList.add('added');
                 if (btn.classList.contains('btn-icon-add')) {
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
-                    btn.setAttribute('title', 'Click to remove service');
+                    btn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+                    btn.setAttribute('title', 'Remove service');
                 } else {
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Added (Remove)';
+                    btn.innerHTML = '<i class="fa-solid fa-trash"></i> Remove';
                 }
             } else {
                 btn.classList.remove('added');
