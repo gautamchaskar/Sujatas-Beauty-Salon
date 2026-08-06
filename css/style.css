@@ -880,8 +880,17 @@ img {
 
 .bottom-cart-content {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    width: 100%;
+}
+
+.bottom-cart-content .btn-block {
+    width: 100%;
+    max-width: 480px;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
 }
 
 .bottom-cart-info {
