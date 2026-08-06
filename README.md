@@ -27,7 +27,7 @@ Follow these simple steps to publish the website online for free:
 ### Step 1: Create a GitHub Repository
 1. Go to [GitHub.com](https://github.com) and log in.
 2. Click the **"+"** icon in the top right -> **New repository**.
-3. Name your repository: `sujatas-salon` or `Sujatas-Saloon`.
+3. Name your repository: `Sujatas-Beauty-Salon`.
 4. Make sure it is set to **Public**.
 5. Click **Create repository**.
 
@@ -39,10 +39,9 @@ git init
 git add .
 git commit -m "Initial commit for Sujata's Beauty Salon Website"
 git branch -M main
-git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/sujatas-salon.git
+git remote add origin https://github.com/gautamchaskar/Sujatas-Beauty-Salon.git
 git push -u origin main
 ```
-*(Replace `<YOUR_GITHUB_USERNAME>` with your actual GitHub username)*
 
 ### Step 3: Turn On GitHub Pages
 1. Go to your repository settings on GitHub (`Settings` tab).
@@ -53,7 +52,7 @@ git push -u origin main
 4. Click **Save**.
 
 🎉 Within 1 to 2 minutes, GitHub will publish your live website link at:
-👉 **`https://<YOUR_GITHUB_USERNAME>.github.io/sujatas-salon/`**
+👉 **`https://gautamchaskar.github.io/Sujatas-Beauty-Salon/`**
 
 ---
 
