@@ -328,6 +328,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function getPriceNumber(item) {
+        const btn = item.querySelector('.book-service-btn');
+        if (btn) {
+            const priceAttr = btn.getAttribute('data-price');
+            if (priceAttr && !isNaN(priceAttr)) {
+                return parseFloat(priceAttr);
+            }
+        }
+        const newPriceElem = item.querySelector('.new-p, .discount-price');
+        if (newPriceElem) {
+            const digits = newPriceElem.textContent.replace(/[^0-9]/g, '');
+            if (digits) {
+                return parseFloat(digits);
+            }
+        }
+        return 999999;
+    }
+
+    function sortServicesAscending() {
+        if (!servicesGrid) return;
+        const items = Array.from(servicesGrid.querySelectorAll('.service-item'));
+        items.sort((a, b) => getPriceNumber(a) - getPriceNumber(b));
+        items.forEach(item => servicesGrid.appendChild(item));
+    }
+
+    // Sort items ascending by price on startup
+    sortServicesAscending();
+
     function applyFilters(category, searchQuery) {
         serviceItems.forEach(item => {
             const itemCatString = item.getAttribute('data-category') || '';
