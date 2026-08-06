@@ -294,12 +294,16 @@ img {
 }
 
 .brand-logo-img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1.5px solid var(--accent-gold);
-  box-shadow: 0 0 12px rgba(229, 193, 88, 0.35);
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(229, 193, 88, 0.45));
+  transition: var(--transition);
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 4px 14px rgba(229, 193, 88, 0.7));
 }
 
 .brand-text {
