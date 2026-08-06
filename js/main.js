@@ -54,13 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const serviceName = btn.getAttribute('data-name');
             const servicePriceRaw = btn.getAttribute('data-price');
+            const originalPriceRaw = btn.getAttribute('data-original') || '';
+            const savingsRaw = btn.getAttribute('data-savings') || '';
             const numericPrice = parseInt(servicePriceRaw, 10) || 0;
+            const numericSavings = parseInt(savingsRaw, 10) || 0;
 
-            toggleServiceSelection(serviceName, numericPrice, servicePriceRaw);
+            toggleServiceSelection(serviceName, numericPrice, servicePriceRaw, originalPriceRaw, savingsRaw, numericSavings);
         });
     });
 
-    function toggleServiceSelection(serviceName, numericPrice, servicePriceRaw) {
+    function toggleServiceSelection(serviceName, numericPrice, servicePriceRaw, originalPriceRaw = '', savingsRaw = '', numericSavings = 0) {
         const existingIndex = selectedServices.findIndex(item => item.name === serviceName);
 
         if (existingIndex > -1) {
@@ -71,7 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedServices.push({
                 name: serviceName,
                 price: numericPrice,
-                priceText: servicePriceRaw
+                priceText: servicePriceRaw,
+                originalText: originalPriceRaw,
+                savingsText: savingsRaw,
+                savings: numericSavings
             });
         }
 
@@ -109,11 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateBookingCartUI() {
         const count = selectedServices.length;
         const totalSum = selectedServices.reduce((sum, item) => sum + item.price, 0);
+        const totalSavings = selectedServices.reduce((sum, item) => sum + (item.savings || 0), 0);
 
         if (cartBadgeCountEl) cartBadgeCountEl.textContent = count;
         if (bottomCountEl) bottomCountEl.textContent = count;
         if (bottomTotalEl) bottomTotalEl.textContent = '₹' + totalSum;
-        if (modalTotalEl) modalTotalEl.textContent = '₹' + totalSum;
+
+        if (modalTotalEl) {
+            if (totalSavings > 0) {
+                modalTotalEl.innerHTML = `₹${totalSum} <span class="total-save-tag"><i class="fa-solid fa-gift"></i> Save ₹${totalSavings}!</span>`;
+            } else {
+                modalTotalEl.textContent = '₹' + totalSum;
+            }
+        }
 
         if (modalMessagePreviewEl) {
             modalMessagePreviewEl.textContent = generateFormattedMessageText();
@@ -123,13 +137,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (floatingCartBtn) floatingCartBtn.classList.add('active');
             if (bottomCartBar) bottomCartBar.classList.add('active');
 
-            // Render selected items list inside cart modal
+            // Render selected items list inside cart modal with individual savings
             if (cartModalItemsListEl) {
                 cartModalItemsListEl.innerHTML = selectedServices.map(item => `
                     <div class="cart-modal-item">
-                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">
+                            <div class="item-name">${item.name}</div>
+                            ${item.savingsText ? `<span class="item-save-badge"><i class="fa-solid fa-tag"></i> Save ${isNaN(item.savingsText) ? item.savingsText : '₹' + item.savingsText}</span>` : ''}
+                        </div>
                         <div class="item-right">
-                            <span class="item-price">${item.price ? '₹' + item.price : item.priceText}</span>
+                            <div class="price-stack">
+                                ${item.originalText && !isNaN(item.originalText) ? `<span class="orig-price">₹${item.originalText}</span>` : ''}
+                                <span class="item-price">${item.price ? '₹' + item.price : item.priceText}</span>
+                            </div>
                             <button class="remove-item-btn" data-name="${item.name}" title="Remove item">&times;</button>
                         </div>
                     </div>

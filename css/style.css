@@ -998,6 +998,39 @@ img {
     margin-bottom: 16px;
 }
 
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.item-save-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #25D366;
+    background: rgba(37, 211, 102, 0.12);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    padding: 1px 6px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.price-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.2;
+}
+
+.orig-price {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
 .summary-total {
     font-size: 1.1rem;
     color: var(--text-light);
@@ -1005,6 +1038,20 @@ img {
 
 .summary-total strong {
     color: var(--accent-gold);
+}
+
+.total-save-tag {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #25D366;
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .cart-modal-actions .btn-block {
