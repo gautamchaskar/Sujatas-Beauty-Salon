@@ -424,33 +424,35 @@ img {
     border-radius: 50%;
   }
 
-  /* Transform Install App button into a floating round button on mobile view to prevent header overlap */
+  /* Transform Install App button into a floating square tile button with text on mobile view to prevent header overlap */
   .install-app-btn {
     position: fixed;
     top: 75px;
     left: 16px;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    border-radius: 50%;
+    width: auto;
+    height: auto;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
     background: var(--ruby-gradient);
     border: 2px solid var(--accent-gold);
     color: var(--accent-gold);
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
     z-index: 1050;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     transition: var(--transition);
   }
 
   .install-app-btn span {
-    display: none;
+    display: inline;
   }
 
   .install-app-btn:hover,
   .install-app-btn:active {
-    transform: scale(1.1);
+    transform: scale(1.05);
     background: var(--gold-gradient);
     color: #2a050a;
   }
