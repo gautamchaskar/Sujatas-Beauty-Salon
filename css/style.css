@@ -980,14 +980,14 @@ img {
   color: #fff;
 }
 
-/* Top Right Floating Round Cart Button with Badge Counter */
+/* Top Right Floating Square Cart Button with Badge Counter */
 .floating-cart-btn {
   position: fixed;
   top: 85px;
   right: 20px;
   width: 54px;
   height: 54px;
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
   background: var(--ruby-gradient);
   border: 2px solid var(--accent-gold);
   color: var(--accent-gold);
