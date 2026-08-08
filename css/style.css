@@ -810,36 +810,46 @@ img {
 
 .services-list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Dynamic view switching for offer cards: rich card view on Limited Time Packages tab, standard row view on All Services */
-.services-list-grid:not(.offers-tab-active) .offer-card {
-  padding: 18px;
-  min-height: auto;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
-}
-
-.services-list-grid:not(.offers-tab-active) .offer-card .offer-card-view {
-  display: none !important;
-}
-
-.services-list-grid:not(.offers-tab-active) .offer-card .standard-row-view {
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.services-list-grid.offers-tab-active .offer-card {
+/* Uniform card view layout for all tiles across all categories */
+.offer-card,
+.service-item {
+  background: var(--card-gradient);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
   padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 15px rgba(229, 193, 88, 0.05);
   min-height: 240px;
 }
 
-.services-list-grid.offers-tab-active .offer-card .offer-card-view {
+.offer-card:hover,
+.service-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-gold);
+  box-shadow:
+    0 16px 40px rgba(229, 193, 88, 0.25),
+    inset 0 0 25px rgba(229, 193, 88, 0.1);
+  background: linear-gradient(
+    145deg,
+    rgba(80, 8, 22, 0.92) 0%,
+    rgba(35, 4, 10, 0.96) 100%
+  );
+}
+
+.offer-card-view {
   display: flex !important;
   flex-direction: column;
   justify-content: space-between;
@@ -847,45 +857,19 @@ img {
   width: 100%;
 }
 
-.services-list-grid.offers-tab-active .offer-card .standard-row-view {
-  display: none !important;
-}
-
 @media (max-width: 600px) {
   .services-list-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
     width: 100%;
   }
 
+  .offer-card,
   .service-item {
-    padding: 14px 16px;
+    padding: 20px 18px;
     width: 100%;
     box-sizing: border-box;
   }
-}
-
-.service-item {
-  background: var(--card-gradient);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-sm);
-  padding: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: var(--transition);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
-}
-
-.service-item:hover {
-  border-color: var(--accent-gold);
-  box-shadow: 0 10px 30px rgba(229, 193, 88, 0.22);
-  transform: translateY(-2px);
-  background: linear-gradient(
-    145deg,
-    rgba(75, 10, 22, 0.92) 0%,
-    rgba(30, 4, 10, 0.96) 100%
-  );
 }
 
 .service-details h4 {
