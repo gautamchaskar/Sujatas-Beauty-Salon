@@ -427,7 +427,7 @@ img {
   /* Transform Install App button into a floating square tile button with text on mobile view to prevent header overlap */
   .install-app-btn {
     position: fixed;
-    top: 75px;
+    top: 90px;
     left: 16px;
     width: auto;
     height: auto;
@@ -983,15 +983,15 @@ img {
 /* Top Right Floating Square Cart Button with Badge Counter */
 .floating-cart-btn {
   position: fixed;
-  top: 85px;
+  top: 90px;
   right: 20px;
-  width: 54px;
-  height: 54px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-sm);
   background: var(--ruby-gradient);
   border: 2px solid var(--accent-gold);
   color: var(--accent-gold);
-  font-size: 1.3rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1002,6 +1002,8 @@ img {
   pointer-events: none;
   transform: scale(0.6);
   transition: var(--transition);
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .floating-cart-btn.active {
@@ -1011,26 +1013,27 @@ img {
 }
 
 .floating-cart-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   background: var(--gold-gradient);
   color: #2a050a;
 }
 
 .cart-badge-count {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: -5px;
+  right: -5px;
   background: #ff2e55;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #18060a;
+  border: 1.5px solid #18060a;
+  line-height: 1;
 }
 
 /* Bottom Sticky View Cart Bar (Sits Above Sticky Action Footer) */
@@ -1055,11 +1058,11 @@ img {
 
 @media (max-width: 991px) {
   .floating-cart-btn {
-    top: 75px;
+    top: 90px;
     right: 16px;
-    width: 48px;
-    height: 48px;
-    font-size: 1.1rem;
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
   }
 }
 
