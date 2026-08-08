@@ -423,6 +423,37 @@ img {
     padding: 10px 14px;
     border-radius: 50%;
   }
+
+  /* Transform Install App button into a floating round button on mobile view to prevent header overlap */
+  .install-app-btn {
+    position: fixed;
+    top: 75px;
+    left: 16px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--ruby-gradient);
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: var(--transition);
+  }
+
+  .install-app-btn span {
+    display: none;
+  }
+
+  .install-app-btn:hover,
+  .install-app-btn:active {
+    transform: scale(1.1);
+    background: var(--gold-gradient);
+    color: #2a050a;
+  }
 }
 
 /* Hero Section */
